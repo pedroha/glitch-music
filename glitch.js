@@ -28,12 +28,23 @@ var Note = function(freq) {
 
 	var gainNode = context.createGain();
 
+	var bass = context.createBiquadFilter();
+
+	bass.type = 3;
+	bass.frequency.value = freq;
+	bass.Q.value = 0.5;
+	bass.gain.value = 0.90;
+
 	var self = this;
 
 	this.play = function() {
 		if (this.oscillator) this.stop();				
 		this.oscillator = context.createOscillator();
-		this.oscillator.connect(gainNode);
+		this.oscillator.detune.value = 100;
+		this.oscillator.connect(bass);
+
+		bass.connect(gainNode); // Not working?
+
     	gainNode.connect(context.destination);
     	this.oscillator.frequency.value = this.freq;
 		this.oscillator.noteOn(0);
@@ -52,6 +63,7 @@ var Note = function(freq) {
 
 	this.changeFreq = function(freq) {
 		if (this.oscillator) {
+			bass.frequency.value = freq;
 	    	this.oscillator.frequency.value = freq;
 		}
 	}
