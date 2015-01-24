@@ -30,9 +30,11 @@
 
 	<p>Random range</p>
 	<input class="random-range" type="range" min="0" max="200"/>
+	<span class="random-range-value"></span>
 
 	<p>Frequency (millis)</p>
 	<input class="frequency" type="range" min="10" max="200"/>
+	<span class="frequency-value"></span>
 
 	<br/>
 
@@ -87,11 +89,13 @@
 		$('.random-range').on('input', function() {
 			var val = $(this).val();
 			glitcher.setRandomRange(val / 100);
+			$('.random-range-value').text(val / 100);
 		});
 
 		$('.frequency').on('input', function() {
 			var val = $(this).val();
 			glitcher.setTimer(val);
+			$('.frequency-value').text(val);
 		});
 
 		$('.keyboard button').on('click', function() {
