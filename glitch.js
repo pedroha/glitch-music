@@ -69,14 +69,31 @@ var Note = function(freq) {
 	}
 };
 
-var A = new Note(440);
-var B = new Note(513.3);
-var C = new Note(586.6);
-var D = new Note(623.3);
-var E = new Note(696.6);
-var F = new Note(770);
-var G = new Note(843.3);
-var A2 = new Note(880);
+// var A = new Note(440);
+// var B = new Note(513.3);
+// var C = new Note(586.6);
+// var D = new Note(623.3);
+// var E = new Note(696.6);
+// var F = new Note(770);
+// var G = new Note(843.3);
+// var A2 = new Note(880);
+
+var A = new Note(220);
+var B = new Note(256);
+var C = new Note(275);
+
+var D = new Note(293);
+var E = new Note(330);
+var F = new Note(348);
+var G = new Note(385);
+var A2 = new Note(421);
+
+
+// var d = 220 / 12;
+
+// for (var i = 0; i < 12; i++) {
+// 	console.log(220 + d* i);
+// }
 
 var Glitcher = function(randomRangePercentage) {
 	var timer;
