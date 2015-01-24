@@ -28,6 +28,8 @@ var Note = function(freq) {
 
 	var gainNode = context.createGain();
 
+	var self = this;
+
 	this.play = function() {
 		if (this.oscillator) this.stop();				
 		this.oscillator = context.createOscillator();
@@ -113,23 +115,3 @@ glitcher.setCallback(function() {
 		notes[i].changeFreq(nextFreq);
 	}
 });
-
-var stopSounds = function() {
-	glitcher.clear();
-	for (var i = 0; i < notes.length; i++) {
-		notes[i].stop();
-	}
-};
-
-A.play();
-C.play();
-G.play();
-
-glitcher.setTimer(100);
-
-// glitcher.setRandomRange(0.30);
-// glitcher.setRandomRange(0.50);
-
-// stopSounds();
-
-

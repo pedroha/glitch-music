@@ -1,4 +1,146 @@
-<script src="glitch.js"/>
-<script>
+<html>
+<head>
+	<title></title>
+	<style>
 
-</script>
+		button {
+			outline: 0;
+			padding: 20px;
+			border-radius: 10px;
+			border: 0;
+			background-color: #00dd00;
+			border: 4px solid #00dd00;
+		}
+
+		button:hover {
+			background-color: #00ff00;
+		}
+
+		button.active {
+			border: 4px solid blue;
+		}
+
+		button.stop {
+			background-color: #ebebeb;
+		}
+
+	</style>
+</head>
+<body>
+
+	<p>Random range</p>
+	<input class="random-range" type="range" min="0" max="200"/>
+
+	<p>Frequency (millis)</p>
+	<input class="frequency" type="range" min="10" max="200"/>
+
+	<br/>
+
+	<div class="keyboard">
+		<button class="A">A</button>
+		<button class="B">B</button>
+		<button class="C">C</button>
+		<button class="D">D</button>
+		<button class="E">E</button>
+		<button class="F">F</button>
+		<button class="G">G</button>
+		<button class="A2">A2</button>
+	</div>
+
+	<br/>
+	<button class="stop">STOP</button>
+
+	<br/>
+	<br/>
+	<br/>
+	<textarea class="master"></textarea>
+
+	<script src="jquery.js"></script>
+	<script src="glitch.js"></script>
+
+	<script>
+
+		var keyboard = {
+			'A': A
+		  , 'B': B
+		  , 'C': C
+		  , 'D': D
+		  , 'E': E
+		  , 'F': F
+		  , 'G': G
+		  , 'A2': A2
+		};
+
+
+		var stopSounds = function() {
+			glitcher.clear();
+			for (var i = 0; i < notes.length; i++) {
+				notes[i].stop();
+			}
+			$('.keyboard button').removeClass('active');
+		};
+
+		$('.stop').on('click', function() {
+			stopSounds();
+		});
+
+		$('.random-range').on('input', function() {
+			var val = $(this).val();
+			glitcher.setRandomRange(val / 100);
+		});
+
+		$('.frequency').on('input', function() {
+			var val = $(this).val();
+			glitcher.setTimer(val);
+		});
+
+		$('.keyboard button').on('click', function() {
+			var $button = $(this);
+			$button.toggleClass('active');
+
+			var note = keyboard[$button.text()];
+
+			if ($button.hasClass('active')) {				
+				note.play();
+			}
+			else {
+				note.stop();
+			}
+		});
+
+		$('.master').on('keydown', function(e) {
+			var k = e.keyCode;
+
+			if (k === 38) {
+				console.log("UP");
+			}
+			else if (k === 40) {
+				console.log("DOWN");
+			}
+			else if (k === 39) {
+				console.log("RIGHT");
+			}
+			else if (k === 37) {
+				console.log("LEFT");
+			}
+			else if (k === 32) {
+				console.log("SPACE");
+			}
+		});
+
+
+		// A.play();
+		// C.play();
+		// G.play();
+
+		glitcher.setTimer(100);
+
+		// glitcher.setRandomRange(0.30);
+		// glitcher.setRandomRange(0.50);
+
+
+
+	</script>
+
+</body>
+</html>
