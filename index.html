@@ -10,6 +10,8 @@
 			border: 0;
 			background-color: #00dd00;
 			border: 4px solid #00dd00;
+
+			transition: 0.5s;
 		}
 
 		button:hover {
@@ -60,7 +62,16 @@
 	<script src="jquery.js"></script>
 	<script src="glitch.js"></script>
 
+	<audio id="audio_1" controls preload loop>
+		<source src="cr8kclav.mp3" type="audio/mpeg">
+	</audio>
+
 	<script>
+
+		document.getElementById('audio_1').addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		});
 
 		var keyboard = {
 			'A': A
@@ -145,6 +156,9 @@
 		// G.play();
 
 		glitcher.setTimer(100);
+
+
+		$('.master').focus();
 
 		// glitcher.setRandomRange(0.30);
 		// glitcher.setRandomRange(0.50);
