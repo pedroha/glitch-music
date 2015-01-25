@@ -26,6 +26,14 @@
 			background-color: #ebebeb;
 		}
 
+		.percussion button {
+			background-color: #eee;
+		}
+
+		.percussion button.active {
+			background-color: orange;
+		}
+
 	</style>
 </head>
 <body>
@@ -58,20 +66,44 @@
 	<br/>
 	<br/>
 	<textarea class="master"></textarea>
+	<br/>
+
+	<audio id="clav" controls preload>
+		<source src="cr8kclav.mp3" type="audio/mpeg">
+		<source src="cr8kclav.wav" type="audio/wav">
+		<source src="cr8kclav.ogg" type="audio/ogg">
+	</audio>
+
+	<audio id="hat" controls preload>
+		<source src="cr8khat.mp3" type="audio/mpeg">
+		<source src="cr8khat.wav" type="audio/wav">
+		<source src="cr8khat.ogg" type="audio/ogg">
+	</audio>
+
+	<div class="percussion">
+		<button class="clav">CLAV</button>
+		<button class="hat">HAT</button>
+	</div>
+
 
 	<script src="jquery.js"></script>
 	<script src="glitch.js"></script>
 
-	<audio id="audio_1" controls preload loop>
-		<source src="cr8kclav.mp3" type="audio/mpeg">
-	</audio>
-
 	<script>
 
-		document.getElementById('audio_1').addEventListener('ended', function() {
+		var clav = document.getElementById('clav');
+		clav.addEventListener('ended', function() {
 			this.currentTime = 0;
 			this.play();
 		});
+		// clav.play();
+
+		var hat = document.getElementById('hat');
+		hat.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		});
+		// hat.play();
 
 		var keyboard = {
 			'A': A
@@ -84,6 +116,27 @@
 		  , 'A2': A2
 		};
 
+		$('.percussion .clav').on('click', function() {
+			$(this).toggleClass('active');
+
+			if ($(this).hasClass('active')) {
+				clav.play();
+			}
+			else {
+				clav.pause();
+			}
+		})
+
+		$('.percussion .hat').on('click', function() {
+			$(this).toggleClass('active');
+
+			if ($(this).hasClass('active')) {
+				hat.play();
+			}
+			else {
+				hat.pause();
+			}
+		})
 
 		var stopSounds = function() {
 			glitcher.clear();
@@ -91,6 +144,9 @@
 				notes[i].stop();
 			}
 			$('.keyboard button').removeClass('active');
+
+			hat.pause();
+			clav.pause();
 		};
 
 		$('.stop').on('click', function() {
