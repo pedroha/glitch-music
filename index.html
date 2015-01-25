@@ -60,13 +60,6 @@
 	</div>
 
 	<br/>
-	<button class="stop">STOP</button>
-
-	<br/>
-	<br/>
-	<br/>
-	<textarea class="master"></textarea>
-	<br/>
 
 	<audio id="clav" controls preload>
 		<source src="cr8kclav.mp3" type="audio/mpeg">
@@ -85,6 +78,14 @@
 		<button class="hat">HAT</button>
 	</div>
 
+	<br/>
+	<button class="percussion-all">PLAY ALL PERCUSSION</button>
+	<button class="stop">STOP</button>
+
+	<br/>
+	<br/>
+	<br/>
+	<textarea class="master"></textarea>
 
 	<script src="jquery.js"></script>
 	<script src="glitch.js"></script>
@@ -104,6 +105,11 @@
 			this.play();
 		});
 		// hat.play();
+
+		$('.percussion-all').on('click', function() {
+			hat.play();
+			clav.play();
+		});
 
 		var keyboard = {
 			'A': A
