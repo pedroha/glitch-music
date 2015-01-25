@@ -38,6 +38,8 @@
 </head>
 <body>
 
+	<textarea class="master"></textarea>
+
 	<p>Random range</p>
 	<input class="random-range" type="range" min="0" max="200"/>
 	<span class="random-range-value"></span>
@@ -73,9 +75,16 @@
 		<source src="cr8khat.ogg" type="audio/ogg">
 	</audio>
 
+	<audio id="hit" controls preload>
+		<source src="cr8khit.mp3" type="audio/mpeg">
+		<source src="cr8khit.wav" type="audio/wav">
+		<source src="cr8khit.ogg" type="audio/ogg">
+	</audio>
+
 	<div class="percussion">
 		<button class="clav">CLAV</button>
 		<button class="hat">HAT</button>
+		<button class="hit">HIT</button>
 	</div>
 
 	<br/>
@@ -85,7 +94,6 @@
 	<br/>
 	<br/>
 	<br/>
-	<textarea class="master"></textarea>
 
 	<script src="jquery.js"></script>
 	<script src="glitch.js"></script>
@@ -104,11 +112,25 @@
 			this.currentTime = 0;
 			this.play();
 		});
+
+
+		var hit = document.getElementById('hit');
+		hat.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		});
+
+		// hat.volume = 0.6;
+		// hit.volume = 0.6;
+		// clav.volume = 0.6;
+
 		// hat.play();
 
 		$('.percussion-all').on('click', function() {
 			hat.play();
 			clav.play();
+			hit.play();
+			$('.master').focus();
 		});
 
 		var keyboard = {
@@ -131,6 +153,7 @@
 			else {
 				clav.pause();
 			}
+			$('.master').focus();
 		})
 
 		$('.percussion .hat').on('click', function() {
@@ -142,6 +165,7 @@
 			else {
 				hat.pause();
 			}
+			$('.master').focus();
 		})
 
 		var stopSounds = function() {
@@ -157,6 +181,7 @@
 
 		$('.stop').on('click', function() {
 			stopSounds();
+			$('.master').focus();
 		});
 
 		$('.random-range').on('input', function() {
@@ -183,6 +208,7 @@
 			else {
 				note.stop();
 			}
+			$('.master').focus();
 		});
 
 		$('.master').on('keydown', function(e) {
