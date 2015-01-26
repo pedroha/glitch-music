@@ -8,7 +8,7 @@ Had fun exploring the [Ring Modulator](http://webaudio.prototyping.bbc.co.uk/rin
 
 The project used [HTML5 Web Audio API] (http://chimera.labs.oreilly.com/books/1234000001552/index.html) and [Makey Makey] (http://makeymakey.com/)
 
-I was introduced to [Circuit Bending](http://en.wikipedia.org/wiki/Circuit_bending) for musical compositions: [N0izmkr, aka Nicole Carroll](http://nicolecarrollmusic.com/about), [Notend, aka Jeff Donaldson](http://notendo.com/), [Glitch Cake](http://glitchcake.com/)
+I was introduced to [Circuit Bending](http://en.wikipedia.org/wiki/Circuit_bending) for musical compositions: [N0izmkr, aka Nicole Carroll](http://nicolecarrollmusic.com/about), [Notendo, aka Jeff Donaldson](http://notendo.com/), [Glitch Cake](http://glitchcake.com/)
 
 # The hack
 
