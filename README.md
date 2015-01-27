@@ -14,6 +14,8 @@ I was introduced to [Circuit Bending](http://en.wikipedia.org/wiki/Circuit_bendi
 
 We used the Web Audio API to create pure tones, then to *glitch* it, we added a couple of variables: percentage range from the *true* frequency, and how often we switch to the next random frequency (in milliseconds).
 
-We also used the Makey Makey (my first time opening the box, yeah!). Caroline brought tin foil, speakers, and 3 TAB's soft drink soda cans. We used a textarea for handling the keyboard input of the Makey Makey.
+We also used the Makey Makey (my first time opening the box, yeah!). Justin and Caroline brought tin foil, speakers, and 3 TAB's soft drink soda cans. We used a textarea for handling the keyboard input of the Makey Makey.
+
+To create the percussion loops, the *loop* attribute in the <audio> tag didn't work. I found a solution on [looping <audio>](https://forestmist.org/blog/html5-audio-loops/) that worked well once I converted the mp3 into ogg and wav files through media.io.
 
 I added a small scale of 7 notes, though we knew we only had 5 inputs for the Makey Makey (if we ignore the 'click' input). The randomness was pretty good, but I felt it was missing a rythm or something melodic to accompany the glitch. So I looked into some drum samples and hooked up to the interface.
