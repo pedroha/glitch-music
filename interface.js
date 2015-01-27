@@ -12,7 +12,7 @@ hat.addEventListener('ended', function() {
 
 
 var hit = document.getElementById('hit');
-hat.addEventListener('ended', function() {
+hit.addEventListener('ended', function() {
 	this.currentTime = 0;
 	this.play();
 });
@@ -51,7 +51,7 @@ $('.percussion .clav').on('click', function() {
 		clav.pause();
 	}
 	$('.master').focus();
-})
+});
 
 $('.percussion .hat').on('click', function() {
 	$(this).toggleClass('active');
@@ -61,6 +61,19 @@ $('.percussion .hat').on('click', function() {
 	}
 	else {
 		hat.pause();
+	}
+	$('.master').focus();
+});
+
+
+$('.percussion .hit').on('click', function() {
+	$(this).toggleClass('active');
+
+	if ($(this).hasClass('active')) {
+		hit.play();
+	}
+	else {
+		hit.pause();
 	}
 	$('.master').focus();
 })
