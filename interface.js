@@ -85,6 +85,7 @@ var stopSounds = function() {
 	}
 	$('.keyboard button').removeClass('active');
 
+	hit.pause();
 	hat.pause();
 	clav.pause();
 };
